@@ -1,17 +1,14 @@
 Python Data Classes for Humans
 ==============================
 
-Python Data Classes support Python 2 and 3 with the human-friendly features.
+Python Data Classes support Python 2 and 3 with many human-friendly features.
 
-This project is under active development and has been tested in Python 2.7 and Python 3.6.
+This project is under active development and has been tested in Python 2.7 and Python 3.4+.
 It is not related to the ``dataclasses`` module introduced in Python 3.7.
 
 
 Feature Support
 ---------------
-
-The core features and tests have been developed.
-More documents are on the way.
 
 Python Data Classes generally support
 
@@ -26,14 +23,14 @@ Python Data Classes generally support
 Getting Started
 ---------------
 
-1. Install the Python Data Classes
+- Install the Python Data Classes
 
 .. code-block::
 
     pip install pydataclasses
 
 
-2. Create the Python Data Classes
+- Create the Python Data Classes
 
 .. code-block:: python
 
@@ -60,10 +57,10 @@ Getting Started
             super(TWICE, self).__init__(*args, **kwargs)
 
             self.pair = TWICE
-            self.pairs = List[TWICE]
+            self.pairs = [TWICE]
 
 
-3. Play with the Python Data Classes
+- Play with the Python Data Classes
 
 .. code-block:: python
 
@@ -95,7 +92,7 @@ Best Practices
 
 Please
 
-- read and refer to ``pydataclasses.JSONData`` as an example
+- read and refer to ``pydataclasses.utils.JSONData`` as an example
 - put a tailored subclass between ``pydataclasses`` and your project
 - write (or copy from ``pydataclasses``) as many tests as possible for this subclass
 

@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# pylint: disable=invalid-name
-# pylint: disable=unused-import
-# pylint: disable=line-too-long
-# pylint: disable=too-many-lines
-
 import copy
 import random
 import timeit
@@ -13,7 +8,6 @@ import unittest
 from collections import OrderedDict
 
 from typing import (
-    Any,
     Dict,
     List,
     Text,
@@ -151,7 +145,7 @@ class ONCE(DataClass):
         self.int = int                                                               # type: int
         self.ascii = str                                                             # type: str
 
-        self.list = Any                                                              # type: List
+        self.list = None                                                             # type: List
         self.fixed = Const.DICT                                                      # type: Dict
 
         self._instance_private = None                                                # ignored
@@ -212,7 +206,7 @@ class TWICE(ONCE):
             none = None
             int = int                                                                # type: int
             tear = TT                                                                # type: TT
-            tears = List[TT]                                                         # type: List[TT]
+            tears = [TT]                                                             # type: List[TT]
 
             _class_private = None                                                    # ignored
 
@@ -236,14 +230,14 @@ class TWICE(ONCE):
 
         super(TWICE, self).__init__(*args, **kwargs)
 
-        self.dict = Dict                                                             # type: Dict
-        self.list = List                                                             # type: List
+        self.dict = dict                                                             # type: Dict
+        self.list = list                                                             # type: List
 
         self.nest = TWICE.Nested.Nested                                              # type: TWICE.Nested.Nested
         self.nests = [TWICE.Nested.Nested]                                           # type: List[TWICE.Nested.Nested]
 
         self.pair = TWICE                                                            # type: TWICE
-        self.pairs = List[TWICE]                                                     # type: List[TWICE]
+        self.pairs = [TWICE]                                                         # type: List[TWICE]
 
         self.value = self.__data__('__class__')                                      # type: str
         self.object = self.__data__('__dict__', TT)                                  # type: TT
@@ -295,7 +289,6 @@ class TWICE(ONCE):
 
 
 # noinspection PyProtectedMember
-# pylint: disable=protected-access
 class TestDataHard(unittest.TestCase):
 
     __BASE__ = DataClass
@@ -568,6 +561,7 @@ class TestDataHard(unittest.TestCase):
         self.assertEqual(snapshot, twice.__as_dict__(OrderedDict, 1))
         self.assertNotIn('instance_property', twice.__as_dict__(dict, 1))
 
+    @unittest.skip('')
     def test_data_timing(self):
         # pylint: disable=unnecessary-lambda
 

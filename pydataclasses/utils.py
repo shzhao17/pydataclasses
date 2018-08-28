@@ -6,7 +6,7 @@ from collections import OrderedDict
 
 import six
 
-from pydataclasses import DataBase
+from pydataclasses import DataClass
 
 
 def exception_quiet(exception_return=None):
@@ -53,7 +53,7 @@ class JSONUtils(object):
 
 # noinspection PyProtectedMember
 # pylint: disable=protected-access
-class JSONData(DataBase):
+class JSONData(DataClass):
 
     __utils__ = JSONUtils()
 

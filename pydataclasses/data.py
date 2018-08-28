@@ -1,16 +1,10 @@
 
-# pylint: disable=too-many-lines
-
 from __future__ import absolute_import
 
-import typing
 import inspect
 import functools
 
-from collections import (
-    OrderedDict,
-    defaultdict,
-)
+from collections import OrderedDict
 
 import six
 import six.moves as sm
@@ -366,7 +360,7 @@ class DataCore(six.with_metaclass(DataMeta, object)):
         self.__synced__ = False
         self.__relink__ = _relink
 
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, *_args, **_kwargs):
 
         _instance = object.__new__(cls)
         _instance.__booted__ = False
@@ -953,55 +947,4 @@ class DataCore(six.with_metaclass(DataMeta, object)):
         return _self
 
 
-class DataBase(DataCore):
-
-    # ===== object, objects =====
-
-    @classmethod
-    def __item_type__(cls, _vt):
-        if hasattr(_vt, '__args__'):
-            return getattr(_vt, '__args__')[0]
-        return _vt[0]
-
-    @classmethod
-    def __data_type__(cls, _vt):
-        if issubclass(_vt, typing.Text):
-            _vt = six.text_type
-        elif issubclass(_vt, typing.Set):
-            _vt = set
-        elif issubclass(_vt, typing.List):
-            _vt = list
-        elif issubclass(_vt, typing.Tuple):
-            _vt = tuple
-        elif issubclass(_vt, typing.Dict):
-            _vt = dict
-        elif issubclass(_vt, typing.DefaultDict):
-            _vt = defaultdict
-        return _vt
-
-    @classmethod
-    def __is_any__(cls, _vt):
-        return _vt is typing.Any or _vt is None
-
-    @classmethod
-    def __is_data__(cls, _vt):
-        return (
-            inspect.isclass(_vt) and
-            not cls.__is_list__(_vt)
-        )
-
-    @classmethod
-    def __is_list__(cls, _vt):
-        return (
-            inspect.isclass(_vt) and
-            issubclass(_vt, typing.List) and
-            _vt != typing.List and
-            _vt != list
-        ) or (
-            isinstance(_vt, list) and
-            _vt and
-            inspect.isclass(_vt[0])
-        )
-
-
-DataClass = DataBase
+DataClass = DataCore

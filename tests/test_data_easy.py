@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# pylint: disable=invalid-name
-# pylint: disable=unused-import
-
 import unittest
 from typing import List
 from pydataclasses import DataClass
@@ -28,11 +25,10 @@ class TWICE(ONCE):
         super(TWICE, self).__init__(*args, **kwargs)
 
         self.pair = TWICE                                                            # type: TWICE
-        self.pairs = List[TWICE]                                                     # type: List[TWICE]
+        self.pairs = [TWICE]                                                         # type: List[TWICE]
 
 
 # noinspection PyProtectedMember
-# pylint: disable=protected-access
 class TestDataEasy(unittest.TestCase):
 
     def test_data_easy(self):
@@ -58,3 +54,4 @@ class TestDataEasy(unittest.TestCase):
         twice = TWICE(old_dict, __sync__=True)
         twice.data = new_data
         assert old_dict == new_dict
+        self.assertEqual(old_dict, new_dict)

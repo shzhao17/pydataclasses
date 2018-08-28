@@ -1,0 +1,11 @@
+dist/
+build/
+.reports/
+.pytest_cache/
+*.egg-info/
+*.pyc
+*.swp
+*.egg
+.tox
+.coverage
+MANIFEST
