@@ -6,6 +6,11 @@ Release History
 1.0.1 (2019-05-04)
 ++++++++++++++++++
 
+- Bump the version again
+
+1.0.1 (2019-05-04)
+++++++++++++++++++
+
 - Bump the version
 
 1.0.0 (2019-05-04)
