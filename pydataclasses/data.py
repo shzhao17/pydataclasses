@@ -3,6 +3,7 @@ from __future__ import absolute_import
 
 import inspect
 import functools
+import itertools
 
 from collections import OrderedDict
 
@@ -372,7 +373,10 @@ class DataCore(six.with_metaclass(DataMeta, object)):
         if not _class.__ported__:
 
             for _cls in list(_class.__bases__) + [_class]:
-                for _k, _v in six.iteritems(_cls.__dict__):
+                for _k, _v in itertools.chain(
+                    six.iteritems(_cls.__dict__),
+                    six.iteritems(_cls.__dict__.get('__annotations__', {})),
+                ):
                     if (
                         not _k.startswith('_') and
                         _instance.__is_property__(_k, _v)

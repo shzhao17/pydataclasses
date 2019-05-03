@@ -8,4 +8,5 @@ build/
 *.egg
 .tox
 .coverage
+.python-version
 MANIFEST

@@ -12,13 +12,12 @@ with open('HISTORY.rst', 'r', 'utf-8') as f:
 
 setup(
     name='pydataclasses',
-    version='0.0.2',
+    version='1.0.0',
     description='Python Data Classes',
     long_description=readme + '\n\n' + history,
     long_description_content_type='text/x-rst',
     author='Patrick Zhao',
-    author_email='dearpatrickzhao@gmail.com',
-    url='https://github.com/dearpatrickzhao/pydataclasses',
+    url='https://github.com/shzhao17/pydataclasses',
     packages=['pydataclasses'],
     package_data={'': ['LICENSE', 'NOTICE']},
     include_package_data=True,
@@ -27,7 +26,7 @@ setup(
     license='Apache 2.0',
     zip_safe=False,
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'License :: OSI Approved :: Apache Software License',

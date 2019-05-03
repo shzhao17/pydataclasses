@@ -1,9 +1,9 @@
-Python Data Classes for Humans
-==============================
+Python Data Classes
+===================
 
 Python Data Classes support Python 2 and 3 with many human-friendly features.
 
-This project is under active development and has been tested in Python 2.7 and Python 3.4+.
+This project has been tested in Python 2.7 and Python 3.4+.
 It is not related to the ``dataclasses`` module introduced in Python 3.7.
 
 
